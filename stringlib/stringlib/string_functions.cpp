@@ -210,7 +210,7 @@ const char* my_strrchr(const char* str, const char character)
 /*****************************************************************************/
 size_t my_strcspn(const char * str1, const char * str2)
 {
-	int len1, len2, i;
+	int len2, i;
 	if (str1 == NULL || str2 == NULL)
 	{
 		return NULL;
@@ -298,7 +298,7 @@ char* my_strtok(char* str, const char* delimiters)
 	}
 	if (str != NULL)
 	{
-		last = my_strcpy(last, str);
+		last = str;
 	}
 	if ((*last == STREND) && (str == NULL))
 	{
@@ -311,7 +311,7 @@ char* my_strtok(char* str, const char* delimiters)
 		last += my_strlen(last);
 		return tokenbeg;
 	}
-	while ((tokenend - tokenbeg) <= 1)
+	while ((tokenend - tokenbeg) < 1)
 	{
 		tokenbeg = tokenend + 1;
 		tokenend = my_strpbrk(tokenend + 1, delimiters);
